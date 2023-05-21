@@ -1,0 +1,21 @@
+{
+  "name": "Alberca",
+  "short_name": "Alberca",
+  "description": "Alberca ",
+  "theme_color": "#abd1f2",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "./",
+  "start_url": "index.html",
+  "lang": "es-CO",
+  "icons": [
+  
+    {
+      "src": "./pwa/images/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+    
+  ]
+}

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Reportes y configuraciones</title>
+    </head>
+    <body>      
+      <div class="wrapper">
+
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        
+      </div>
+    <div></div>
+  
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="https://i.pinimg.com/originals/ee/c0/71/eec071442e9a1b8e017c5a7c1853b880.jpg" width="20" height="20" alt="">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i>Nueva Renta</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Agenda</a>
+                </li>
+               
+            </ul>
+        </div>
+    </nav>
+
+
+       
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css"/>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.2.0/css/dataTables.dateTime.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"/>
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/rowreorder/1.3.1/js/dataTables.rowReorder.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+
+       <br>
+       <br>
+     
+        <table id="example" class="table" style="width: 100%">
+     
+          <thead class="text-dark">
+            <tr>
+              <td class="botones" id="texto"></td>
+              <td ><span class="botones">desde la fecha:</span></td>
+              <td><input type="text" id="min" name="min"/></td>
+      
+              <td class="botones"> hasta la fecha: <input type="text" id="max" name="max"/></td>
+          </tr>
+            <tr class="botones2">
+                    <th class="text-center align-middle">Accion</th>
+                    <th class="text-center align-middle">Nombre</th>
+                    <th class="text-center align-middle">Cantidad de adelanto</th>
+                    <th class="text-center align-middle">Fecha Apartada</th>
+                </tr>
+            </thead>
+            <tbody class="text-center align-middle botones2">
+            </tbody>
+        </table>
+        <div class="modal fade" id="Configuraciones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Configuraciones
+                        </h1>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="exampleInputEmail1" class="form-label">Nuevo precio</label>
+                        <input required autocomplete="off" type="number" class="form-control user-password" id="nuevo_precio" aria-describedby="emailHelp"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Salir
+                        </button>
+                        <button type="button" class="btn btn-primary" id="actualizarprecio">
+                            Guardar cambios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="form_actualizar"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Salir
+                        </button>
+                        <button type="button" class="btn btn-primary" id="actualizar">
+                            Pagar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="eliminar_herramienta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Estas Seguro de eliminarlo?
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                          Salir
+                      </button>
+                      <button type="button" class="btn btn-primary" id="eliminar">
+                          Eliminar
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+        <script type="module">
+            import {updateusers, updateconfiguraciones, getconfiguraciones,deleteuser} from "../firestore.js";
+            let cont = 0;
+            let cont_eliminar = 0;
+
+            let costo = null;
+            let coste = document.getElementById("actualizarprecio");
+            coste.addEventListener("click", (event) => {
+                let precio = document.getElementById("nuevo_precio").value.toString();
+                if (! precio) {
+                    $("#Configuraciones").modal("hide");
+                    return alert("No se ingreso un nuevo precio");
+                }
+                updateconfiguraciones("Vq4uaOxlUotSqCRdwnbe", {precio});
+                reload_dates();
+            });
+
+            reload_dates();
+            async function reload_dates() {
+                const querysnapshot = await getconfiguraciones();
+                querysnapshot.forEach((doc) => {
+                    costo = doc.data().precio.precio;
+                    let text = document.getElementById("texto");
+                    text.innerHTML = `Precio Actual ${costo}`;
+                    $("#Configuraciones").modal("hide");
+                });
+            }
+
+            var minDate,
+                maxDate;
+            let ganancias = null;
+            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+                var min = minDate.val();
+                var max = maxDate.val();
+                var date = new Date(data[3]);
+
+                if ((min === null && max === null) || (min === null && date <= max) || (min <= date && max === null) || (min <= date && date <= max)) {
+                    return true;
+                }
+                return false;
+            });
+            let dt = null;
+            $(document).ready(function () {
+                let dinero_dado = null;
+                // Create date inputs
+                minDate = new DateTime($("#min"), {format: "MMMM Do YYYY"});
+                maxDate = new DateTime($("#max"), {format: "MMMM Do YYYY"});
+
+                dt = $("#example").DataTable({
+                    dom: "Bfrtip",
+                    ajax: {
+                        url: "https://firestore.googleapis.com/v1/projects/alberca-5be78/databases/(default)/documents/users",
+                        dataSrc: function (obj) {
+                            let arreglo = [];
+                            for (var i = 0; i < obj.documents.length; i++) {
+                                let id = obj.documents[i].name;
+                                id = id.split("/");
+                                id = id[6];
+                                let adelanto = obj.documents[i].fields.adelanto.stringValue;
+                                let nombre = obj.documents[i].fields.nombre.stringValue;
+                                let fecha_asignada = obj.documents[i].fields.fecha_asignada.stringValue;
+
+                                fecha_asignada = new Date(fecha_asignada);
+                                fecha_asignada = fecha_asignada.setDate(fecha_asignada.getDate() + 1);
+                                fecha_asignada = new Date(fecha_asignada);
+
+                                let object = {
+                                    id: id,
+                                    nombre: nombre,
+                                    adelanto: adelanto,
+                                    fecha_asignada: fecha_asignada
+                                };
+                                arreglo.push(object);
+                            }
+                            return arreglo;
+                        }
+                    },
+                    buttons: [
+                        {
+                            text: "Configuraciones",
+                            className: "",
+
+                            action: function (e, dt, node, config) {
+                                $("#Configuraciones").modal("show");
+                            }
+                        },
+                    ],
+                    columns: [
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+
+                                if (row.adelanto == 'pagado') {
+
+                                    return "<button type='button' role='eliminar_herramienta' class='btn btn-danger'><img widht='30' height='30' src='https://cdn.icon-icons.com/icons2/1808/PNG/512/trash-can_115312.png'></button>";
+
+                                } else {
+
+                                    return "<button type='button' role='actualizar_herramienta' class='btn btn-'><img widht='30' height='30' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_uEMYSx6UYHsJ4JYB7lE-v_qm9zGGp2eEMhQ4CbnAawoW8wKOv4fTk50ehsSpG_7FO2A&usqp=CAU'></button><button type='button' role='eliminar_herramienta' class='btn btn-danger'><img widht='30' height='30' src='https://cdn.icon-icons.com/icons2/1808/PNG/512/trash-can_115312.png'></button>";
+
+
+                                }
+                            }
+                        }, {
+                            data: "nombre"
+                        }, {
+                            data: "adelanto"
+                        }, {
+                            data: "fecha_asignada.toDateString()"
+                        },
+                    ],
+                    "createdRow": function (row, data, dataIndex) {
+                        if (data.adelanto == 'pagado') {
+                            $(row).addClass('green');
+
+                        }
+                    },
+                  
+                    initComplete: function () {
+                      $(document).on("click", "button[role='eliminar_herramienta']", function () {
+                        $("#eliminar_herramienta").modal("show");
+                        if ($("#eliminar_herramienta").modal("show")) {
+                                cont_eliminar++;
+                                if (cont_eliminar > 1) {
+                                    alert(" Se previene un error que aun no sabe como repararse gracias, por favor vuelva a intentarlo");
+                                    window.location.reload();
+                                }
+                              }
+                        const button = document.getElementById("eliminar");
+                        button.addEventListener("click", (event) => {
+                          cont_eliminar = 0;
+                          var data = dt.row($(this).parents("tr")).data();
+                          deleteuser(data.id);
+                          dt.row($(this).parents('tr')).remove().draw();
+
+                          $("#eliminar_herramienta").modal("hide");
+                        });
+                      });
+                        $(document).on("click", "button[role='actualizar_herramienta']", function () {
+                            var data = dt.row($(this).parents("tr")).data();
+                            dinero_dado = data.adelanto;
+                            document.getElementById("form_actualizar").innerHTML = `
+                        <div class="user-login-box ">
+            <div class="card  text-center">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                        <div class="mb-3 card-title">
+                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                            <input required autocomplete="off" type="text" class="form-control user-password" id="nombre" disabled value=${
+                                data.nombre
+                            } aria-describedby="emailHelp"/>
+                          
+                        </div>
+                        <div class="mb-3 card-title botones2">
+                            <label for="exampleInputPassword1" class="form-label user-name">Quedo a deber</label>
+                            <input type="number" disabled required autocomplete="off" class="btn-danger btn form-control" id="adelanto_cantidad"/>
+                          
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label user-name">Ingresa la fecha apartada</label>
+
+                            <input required  disabled value="${
+                                data.fecha_asignada.toDateString()
+                            }" class="form-control" autocomplete="off"/>
+                        </div>
+                       
+                </div>
+                <div class="card-footer text-muted">
+                   
+                </div>
+            </div>
+        </div>
+                        `;
+                            let array = [];
+                            $("#exampleModal").modal("show");
+                            if ($("#exampleModal").modal("show")) {
+                                cont++;
+                                if (cont > 1) {
+                                    alert(" Se previene un error que aun no sabe como repararse gracias, por favor vuelva a intentarlo");
+                                    window.location.reload();
+                                }
+                                let text_adelanto = document.getElementById("adelanto_cantidad");
+                                dinero_dado = parseInt(dinero_dado);
+                                let adelanto_pasado = parseInt(costo);
+                                let cantidad_debida = adelanto_pasado - dinero_dado;
+                                text_adelanto.value = `${cantidad_debida}`;
+                                let actualizar = document.getElementById("actualizar");
+
+                            }
+
+                            actualizar.addEventListener("click", (event) => {
+                                cont = 0;
+                                let adelanto = "pagado";
+                                updateusers(data.id, {adelanto});
+                                $("#exampleModal").modal("hide");
+                                var dtb = dt.row($(this).parents("tr"));
+                                var idx = dt.row(dtb).index();
+
+                                dt.cell({row: idx, column: 2}).data(adelanto).draw(true);
+                                
+
+                                dt.cell({row: idx, column: 0}).data("<button type='button' role='eliminar_herramienta' class='btn btn-danger'><img widht='30' height='30' src='https://cdn.icon-icons.com/icons2/1808/PNG/512/trash-can_115312.png'></button>").draw(true);
+                                
+
+                            });
+                        });
+                    },
+                    responsive: true,
+                    language: {
+                        decimal: "",
+                        emptyTable: "No hay información",
+                        info: "Mostrando _START_ a _END_ de _TOTAL_ Documentos",
+                        infoEmpty: "Mostrando 0 to 0 of 0 Documentos",
+                        infoFiltered: "(Filtrado de _MAX_ total entradas)",
+                        infoPostFix: "",
+                        thousands: ",",
+                        lengthMenu: "Mostrar _MENU_ Documentos",
+                        loadingRecords: "Cargando...",
+                        processing: "Procesando...",
+                        search: "Buscar:",
+                        zeroRecords: "Sin resultados encontrados",
+                        paginate: {
+                            first: "Primero",
+                            last: "Ultimo",
+                            next: "Siguiente",
+                            previous: "Anterior"
+                        }
+                    }
+                });
+                $("#min, #max").on("change", function () {
+                    dt.draw();
+                });
+            });
+        </script>
+        <script src="menu.js"></script>
+    </body>
+</html>
