@@ -1,21 +1,20 @@
 {
-  "name": "Alberca",
+  "name": "Alberca · Rentas",
   "short_name": "Alberca",
-  "description": "Alberca ",
-  "theme_color": "#abd1f2",
-  "background_color": "#2196f3",
+  "description": "Agenda de rentas y control de pagos de la alberca.",
+  "theme_color": "#0b5fa5",
+  "background_color": "#f2f8fd",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "./",
-  "start_url": "index.html",
-  "lang": "es-CO",
+  "start_url": "./index.html",
+  "lang": "es-MX",
   "icons": [
-  
     {
       "src": "./pwa/images/icons/icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-    
   ]
 }
