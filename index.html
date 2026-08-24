@@ -1,116 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Nuevo Usuario</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="style.css">
-        <link rel="manifest" href="./manifest.json">
-        <meta name="theme-color" content="#2F3BA2">
-        <meta name="MobileOptimized" content="width">
-        <meta name="HandheldFriendly" content="true">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
-        <link rel="apple-touch-icon" href="./pwa/images/icons/icon.png">
-        
-        <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
-    </head>
-    <body class="">
-         <div class="wrapper">
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-          </div>
-        <div></div>
-      
-        <nav class="navbar navbar-expand-custom navbar-mainbg">
-            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <img src="https://i.pinimg.com/originals/ee/c0/71/eec071442e9a1b8e017c5a7c1853b880.jpg" width="20" height="20" alt="">            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Nueva Renta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="configuraciones.html"><i class="far fa-address-book"></i>Agenda</a>
-                    </li>
-                   
-                </ul>
-            </div>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alberca · Nueva renta</title>
+    <meta name="description" content="Registro de rentas y control de pagos de la alberca." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#0b5fa5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="./pwa/images/icons/icon.png" />
+    <link rel="icon" href="./pwa/images/icons/icon.png" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__brand" href="index.html">
+          <span aria-hidden="true">🏊</span> Alberca
+        </a>
+        <nav aria-label="Principal">
+          <ul class="nav__links">
+            <li><a class="nav__link" href="index.html">Nueva renta</a></li>
+            <li><a class="nav__link" href="configuraciones.html">Agenda</a></li>
+          </ul>
         </nav>
+      </div>
+    </header>
 
-
-        <div class="user-login-box ">
-            <div class="card  text-center">
-                <div id="recordar_costo" class="card-header">
-
-                </div>
-                <div class="card-body">
-                    <form id="form">
-                        <div class="mb-3 card-title">
-                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                            <input required autocomplete="off" type="text" class="form-control user-password" id="nombre" aria-describedby="emailHelp"/>
-                            <div id="emailHelp" class="form-text ">
-                                Ingresa el nombre de la persona
-                            </div>
-                        </div>
-                        <div class="mb-3 card-title">
-                            <label for="exampleInputPassword1" class="form-label user-name">Cantidad</label>
-                            <input type="number" required autocomplete="off" class="form-control" id="adelanto"/>
-                            <div id="emailHelp" class="form-text ">
-                                Ingresa la cantidad con que se aparto
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label user-name">Ingresa la fecha apartada</label>
-
-                            <input required  id="doi" class="form-control" autocomplete="off"/>
-                        </div>
-                        <button id="insert" type="submit" class="btn btn-info">
-                            Agregar
-                        </button>
-                    </form>
-                </div>
-                <div class="card-footer text-muted">
-                   
-                </div>
-            </div>
+    <main class="container page">
+      <div class="page__head">
+        <div>
+          <h1 class="page__title">Nueva renta</h1>
+          <p class="page__subtitle">
+            Elige un día libre en el calendario y registra el anticipo del cliente.
+          </p>
         </div>
-        
-        <script type="module" src="index.js"></script>
+        <div class="price-pill">
+          <small>Costo de la renta</small>
+          <span id="precio-actual">—</span>
+        </div>
+      </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="menu.js"></script>
-        <script src="./regist_serviceWorker.js"></script> 
-    <script>
-      $(function(){
-    //Precarga de la pagina se ejecuta solo una vez
-    setTimeout(
-        ()=>{
-            $(".cargando").hide(); 
-         } , 50
-     );
-     });
-    </script>
-    </body>
-</html></body></html>
+      <div class="grid-2">
+        <section class="card" aria-labelledby="titulo-calendario">
+          <h2 class="card__title" id="titulo-calendario">Disponibilidad</h2>
+          <p class="card__hint">Los días tachados ya están apartados.</p>
+
+          <div class="calendar__head">
+            <button class="btn btn--ghost btn--icon" id="mes-anterior" type="button" aria-label="Mes anterior">‹</button>
+            <span class="calendar__month" id="mes-actual">—</span>
+            <button class="btn btn--ghost btn--icon" id="mes-siguiente" type="button" aria-label="Mes siguiente">›</button>
+          </div>
+          <div class="calendar__weekdays" id="calendario-dias" aria-hidden="true"></div>
+          <div class="calendar__grid" id="calendario" role="grid" aria-label="Calendario de disponibilidad"></div>
+
+          <p class="legend">
+            <span><i class="i-libre"></i> Libre</span>
+            <span><i class="i-ocupado"></i> Apartado</span>
+            <span><i class="i-sel"></i> Seleccionado</span>
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="titulo-form">
+          <h2 class="card__title" id="titulo-form">Datos de la reserva</h2>
+          <p class="card__hint">El anticipo no puede superar el costo de la renta.</p>
+
+          <form id="form" novalidate>
+            <div class="field">
+              <label class="field__label" for="nombre">Nombre del cliente</label>
+              <input class="input" id="nombre" name="nombre" type="text" autocomplete="off" required
+                placeholder="Ej. María López" />
+              <span class="error-text" id="error-nombre">Escribe el nombre del cliente.</span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="adelanto">Anticipo</label>
+              <input class="input" id="adelanto" name="adelanto" type="number" min="0" step="1" required
+                inputmode="numeric" placeholder="0" />
+              <span class="field__hint">Usa 0 si aún no deja anticipo.</span>
+              <span class="error-text" id="error-adelanto">El anticipo debe estar entre 0 y el costo de la renta.</span>
+              <div class="inline-actions">
+                <button class="btn btn--ghost btn--sm" type="button" id="pago-mitad">Mitad</button>
+                <button class="btn btn--ghost btn--sm" type="button" id="pago-total">Pago completo</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="fecha">Fecha apartada</label>
+              <input class="input" id="fecha" type="text" readonly placeholder="Selecciona un día en el calendario" />
+              <span class="error-text" id="error-fecha">Selecciona una fecha disponible.</span>
+            </div>
+
+            <div class="summary" aria-live="polite">
+              <div class="summary__row"><span>Costo</span><strong id="resumen-costo">—</strong></div>
+              <div class="summary__row"><span>Anticipo</span><strong id="resumen-adelanto">—</strong></div>
+              <div class="summary__row"><span>Resta</span><strong id="resumen-resta">—</strong></div>
+            </div>
+
+            <button class="btn btn--primary btn--block" id="insert" type="submit">Agregar reserva</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="index.js"></script>
+    <script src="./regist_serviceWorker.js"></script>
+  </body>
+</html>

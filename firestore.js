@@ -1,13 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getFirestore,collection,addDoc,getDocs,updateDoc,doc,deleteDoc} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  updateDoc,
+  doc,
+  deleteDoc,
+  query,
+  orderBy,
+} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAsz6H2eZt7e_WpDPy6oAWKjs_Gylx9FfE",
   authDomain: "alberca-5be78.firebaseapp.com",
@@ -18,15 +21,50 @@ const firebaseConfig = {
   measurementId: "G-SMBE25B27E",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore();
-export const saveuser = (nombre,adelanto,fecha_asignada)=>
-addDoc(collection(db, "users"),{nombre,adelanto,fecha_asignada});
-export const getusers= () =>getDocs(collection(db, "users"));
-export const updateusers = (id,field) => updateDoc(doc(db, "users",id),field);
-export const updateconfiguraciones = (id,precio)=>
-updateDoc(doc(db, "configuraciones",id),{precio});
-export const getconfiguraciones= () =>getDocs(collection(db, "configuraciones"));
-export const deleteuser = (id) => deleteDoc(doc(db, "users", id));
+const db = getFirestore(app);
+
+export const RESERVAS = "users";
+export const CONFIGURACIONES = "configuraciones";
+export const CONFIG_ID = "Vq4uaOxlUotSqCRdwnbe";
+
+export const saveReserva = (nombre, adelanto, fecha_asignada) =>
+  addDoc(collection(db, RESERVAS), { nombre, adelanto, fecha_asignada });
+
+export const updateReserva = (id, campos) =>
+  updateDoc(doc(db, RESERVAS, id), campos);
+
+export const deleteReserva = (id) => deleteDoc(doc(db, RESERVAS, id));
+
+export async function getReservas() {
+  const snapshot = await getDocs(
+    query(collection(db, RESERVAS), orderBy("fecha_asignada"))
+  );
+  return snapshot.docs.map((d) => {
+    const data = d.data();
+    return {
+      id: d.id,
+      nombre: data.nombre ?? "",
+      adelanto: data.adelanto ?? "0",
+      fecha_asignada: data.fecha_asignada ?? "",
+    };
+  });
+}
+
+/**
+ * El documento de configuración guarda el precio como `{ precio: { precio: "500" } }`
+ * en los datos históricos, por lo que se aceptan ambas formas al leer.
+ */
+export async function getPrecio() {
+  const snapshot = await getDocs(collection(db, CONFIGURACIONES));
+  const config = snapshot.docs.find((d) => d.id === CONFIG_ID) ?? snapshot.docs[0];
+  if (!config) return 0;
+  const valor = config.data().precio;
+  const bruto = valor && typeof valor === "object" ? valor.precio : valor;
+  return Number(bruto) || 0;
+}
+
+export const setPrecio = (precio) =>
+  updateDoc(doc(db, CONFIGURACIONES, CONFIG_ID), {
+    precio: { precio: String(precio) },
+  });

@@ -1,59 +1,60 @@
-;
-//asignar un nombre y versión al cache
-const CACHE_NAME = 'WebDeveloper',
-  urlsToCache = [
-    './',
-    './index.html',
-    './style.css',
-    './regist_serviceWorker.js',
-    './pwa/images/icons/icon.png',
-  ]
+const CACHE_NAME = "alberca-v2";
+const urlsToCache = [
+  "./",
+  "./index.html",
+  "./configuraciones.html",
+  "./style.css",
+  "./index.js",
+  "./agenda.js",
+  "./ui.js",
+  "./firestore.js",
+  "./manifest.json",
+  "./regist_serviceWorker.js",
+  "./pwa/images/icons/icon.png",
+];
 
-//durante la fase de instalación, generalmente se almacena en caché los activos estáticos
-self.addEventListener('install', e => {
+self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache)
-          .then(() => self.skipWaiting())
-      })
-      .catch(err => console.log('Falló registro de cache', err))
-  )
-})
+    caches
+      .open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
+      .catch((err) => console.log("Falló registro de cache", err))
+  );
+});
 
-//una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
-self.addEventListener('activate', e => {
-  const cacheWhitelist = [CACHE_NAME]
-
+self.addEventListener("activate", (e) => {
   e.waitUntil(
-    caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            //Eliminamos lo que ya no se necesita en cache
-            if (cacheWhitelist.indexOf(cacheName) === -1) {
-              return caches.delete(cacheName)
-            }
-          })
+    caches
+      .keys()
+      .then((names) =>
+        Promise.all(
+          names.filter((name) => name !== CACHE_NAME).map((name) => caches.delete(name))
         )
-      })
-      // Le indica al SW activar el cache actual
+      )
       .then(() => self.clients.claim())
-  )
-})
+  );
+});
 
-//cuando el navegador recupera una url
-self.addEventListener('fetch', e => {
-  //Responder ya sea con el objeto en caché o continuar y buscar la url real
+/**
+ * Network-first para los recursos propios (evita servir versiones viejas de la app)
+ * con respaldo en caché cuando no hay conexión. Las peticiones a Firestore y otros
+ * orígenes se dejan pasar directo a la red.
+ */
+self.addEventListener("fetch", (e) => {
+  const { request } = e;
+  if (request.method !== "GET") return;
+  if (new URL(request.url).origin !== self.location.origin) return;
+
   e.respondWith(
-    caches.match(e.request)
-      .then(res => {
-        if (res) {
-          //recuperar del cache
-          return res
-        }
-        //recuperar de la petición a la url
-        return fetch(e.request)
+    fetch(request)
+      .then((response) => {
+        const copia = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, copia));
+        return response;
       })
-  )
-})
+      .catch(() =>
+        caches.match(request).then((res) => res ?? caches.match("./index.html"))
+      )
+  );
+});
